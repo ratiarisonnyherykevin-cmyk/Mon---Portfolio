@@ -1,0 +1,220 @@
+@page "/"
+
+<!-- Intégration de Google Fonts pour un style très Tech/Gamer -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #0b0c10;
+        color: #c5c6c7;
+        font-family: 'Inter', sans-serif;
+    }
+    .text-neon {
+        color: #00f2fe;
+        text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+    .title-gamer {
+        font-family: 'Orbitron', sans-serif;
+        letter-spacing: 2px;
+    }
+    /* Style des cartes avec effet Glassmorphism & Glow */
+    .gamer-card {
+        background: rgba(31, 40, 51, 0.4) !important;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .gamer-card:hover {
+        transform: translateY(-8px);
+        border-color: #00f2fe !important;
+        box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+    }
+    /* Bouton Gamer Style */
+    .btn-neon {
+        background: transparent;
+        color: #00f2fe;
+        border: 1px solid #00f2fe;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    .btn-neon:hover {
+        background: #00f2fe;
+        color: #0b0c10;
+        box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+        transform: scale(1.02);
+    }
+    .btn-neon-filled {
+        background: #00f2fe;
+        color: #0b0c10;
+        border: 1px solid #00f2fe;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    }
+    .btn-neon-filled:hover {
+        background: transparent;
+        color: #00f2fe;
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+    }
+    /* Séparateurs futuristes */
+    .neon-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.4), transparent);
+        border: none;
+    }
+</style>
+
+<div class="min-vh-100">
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top px-3" style="background: rgba(11, 12, 16, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-neon title-gamer" href="#">DEV_3D.EXE</a>
+            <div class="navbar-nav ms-auto gap-2">
+                <a class="nav-link text-light px-3 title-gamer fs-6" href="#competences">COMPÉTENCES</a>
+                <a class="nav-link text-light px-3 title-gamer fs-6" href="#projets">PROJETS</a>
+                <a class="nav-link text-light px-3 title-gamer fs-6" href="#contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="container py-5 text-center my-5 position-relative">
+        <div class="row justify-content-center py-5">
+            <div class="col-lg-9">
+                <h1 class="display-3 fw-black text-white mb-4 title-gamer">CRÉER DES MONDES,<br><span class="text-neon">CODER DES EXPÉRIENCES</span>.</h1>
+                <p class="lead mb-5 fs-5 text-muted mx-auto" style="max-width: 700px; font-weight: 300; line-height: 1.8;">
+                    Passionné par le développement de jeux vidéo sur <span class="text-white fw-bold">Unity</span> et la modélisation 3D d'automobiles sur <span class="text-white fw-bold">Blender</span>. Découvre mes créations et mes compétences techniques.
+                </p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#projets" class="btn btn-neon-filled btn-lg px-4 shadow">VOIR LES PROJETS</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg px-4 title-gamer" style="letter-spacing: 1px; font-size: 1.1rem;">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <hr class="neon-divider my-5">
+
+    <!-- Compétences -->
+    <section id="competences" class="container py-5">
+        <h2 class="text-center fw-bold text-white mb-5 title-gamer">SYSTEM_STATS ( )</h2>
+        <div class="row g-4 text-center">
+            @foreach (var comp in ListeCompetences)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="card gamer-card h-100 p-4 text-light">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h4 class="card-title fw-bold text-neon title-gamer mb-3 fs-5">@comp.Nom</h4>
+                            <p class="card-text text-muted small m-0" style="line-height: 1.6;">@comp.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <hr class="neon-divider my-5">
+
+    <!-- Réalisations / Projets -->
+    <section id="projets" class="container py-5">
+        <h2 class="text-center fw-bold text-white mb-5 title-gamer">MES_RÉALISATIONS [3]</h2>
+        
+        <div class="row g-4">
+            @foreach (var projet in ListeProjets)
+            {
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card gamer-card h-100 text-light overflow-hidden">
+                        <!-- Preview Image -->
+                        <div class="bg-dark text-center py-4 position-relative border-bottom border-secondary border-opacity-25" style="height: 220px; background-size: cover; background-position: center; background-image: url('@projet.ImageUrl');">
+                            @if (string.IsNullOrEmpty(projet.ImageUrl))
+                            {
+                                <div class="d-flex align-items-center justify-content-center h-100 bg-black bg-opacity-50">
+                                    <span class="text-muted small title-gamer">[ NO_PREVIEW.PNG ]</span>
+                                </div>
+                            }
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="card-body d-flex flex-column p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="card-title fw-bold m-0 text-white title-gamer fs-5">@projet.Titre</h4>
+                                <span class="badge bg-transparent text-neon px-2 py-1 small" style="border: 1px solid rgba(0, 242, 254, 0.3); font-family: 'Orbitron'; font-size: 0.75rem;">@projet.Badge</span>
+                            </div>
+                            <p class="card-text text-muted flex-grow-1 small mb-4" style="line-height: 1.6;">@projet.Description</p>
+                            
+                            <a href="@projet.LienUrl" target="_blank" class="btn btn-neon btn-sm w-100 py-2">OPEN_PROJECT</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="text-muted py-5 mt-5" style="background: #07080c; border-top: 1px solid rgba(0, 242, 254, 0.1);">
+        <div class="container text-center py-4">
+            <h3 class="text-white fw-bold mb-3 title-gamer">TRAVAILLONS_ENSEMBLE</h3>
+            <p class="mb-4 text-muted mx-auto" style="max-width: 500px;">Besoin d'un prototype de jeu Unity, d'une modélisation 3D hard-surface propre ou d'une interface web réactive ?</p>
+            <div class="d-flex justify-content-center gap-3 mb-5">
+                <a href="#" class="btn btn-outline-secondary btn-sm px-3 text-light" style="border-color: rgba(255,255,255,0.1);">GitHub</a>
+                <a href="#" class="btn btn-outline-secondary btn-sm px-3 text-light" style="border-color: rgba(255,255,255,0.1);">Sketchfab</a>
+                <a href="#" class="btn btn-outline-secondary btn-sm px-3 text-light" style="border-color: rgba(255,255,255,0.1);">Email</a>
+            </div>
+            <p class="small m-0 title-gamer" style="font-size: 0.8rem; color: rgba(255,255,255,0.2);">&copy; 2026 // ENGINE: BLAZOR_C# // ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+</div>
+
+@code {
+    // Structure pour les compétences
+    public class CompetenceData {
+        public string Nom { get; set; }
+        public string Description { get; set; }
+    }
+
+    private List<CompetenceData> ListeCompetences = new List<CompetenceData>
+    {
+        new CompetenceData { Nom = "UNITY", Description = "Création de prototypes 3D, gestion des physiques, gameplay et mécaniques de jeu avancées." },
+        new CompetenceData { Nom = "C# / C-SHARP", Description = "Programmation orientée objet, scripts optimisés pour Unity et logique backend ASP.NET." },
+        new CompetenceData { Nom = "BLENDER", Description = "Modélisation 3D hard-surface d'automobiles. Topologie propre en Poly-to-Poly sur blueprints." },
+        new CompetenceData { Nom = "WEB DEV", Description = "Conception d'interfaces web modernes, dynamiques et réactives avec HTML, CSS et Blazor." }
+    };
+
+    // Structure d'un projet
+    public class ProjetData
+    {
+        public string Titre { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Badge { get; set; } = "";
+        public string ImageUrl { get; set; } = ""; 
+        public string LienUrl { get; set; } = "#"; 
+    }
+
+    private List<ProjetData> ListeProjets = new List<ProjetData>
+    {
+        new ProjetData { 
+            Titre = "Modélisation Mazda", 
+            Description = "Modélisation détaillée de la carrosserie d'un Mazda en Poly-to-Poly sur Blender, basée sur des blueprints orthogonaux.", 
+            Badge = "BLENDER / 3D",
+            LienUrl = "https://sketchfab.com/"
+        },
+        new ProjetData { 
+            Titre = "Contrôleur Véhicule 3D", 
+            Description = "Script C# avancé sur Unity pour gérer le déplacement, les physiques d'accélération et les collisions d'un joueur.", 
+            Badge = "UNITY / C#",
+            LienUrl = "https://github.com/"
+        },
+        new ProjetData { 
+            Titre = "Fourgon Mercedes 3D", 
+            Description = "Projet de modélisation 3D d'un utilitaire low-poly optimisé pour l'intégration en jeu vidéo.", 
+            Badge = "BLENDER / 3D",
+            LienUrl = "https://sketchfab.com/"
+        }
+    };
+}
